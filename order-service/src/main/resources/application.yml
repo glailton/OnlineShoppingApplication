@@ -1,0 +1,13 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: order-service
+
+  jmx:
+    enabled: false
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
