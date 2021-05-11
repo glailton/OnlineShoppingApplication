@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+       - id: product-service
+         uri: "lb://product-service"
+         predicates: Path=/api/product
+      loadbalancer:
+        ribbon:
+          enabled: false
+      default-filters: "TokenRelay"
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: "http://localhost:8180/auth/realms/microservices-project-realm"
+        registration:
+          spring-cloud-gateway-client:
+            client-id: spring-cloud-gateway-client
+            client-secret: "d54ee104-1867-4d80-a623-2e289a4ec437"
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8080/login/oauth2/code/spring-cloud-gateway-client"
+eureka:
+  instance:
+    instance-id: ${spring.application.name}-${random.uuid}

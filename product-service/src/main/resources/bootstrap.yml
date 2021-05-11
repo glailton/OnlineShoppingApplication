@@ -7,10 +7,21 @@ spring:
       port: 8200
       scheme: http
       authentication: TOKEN
-      token: s.wsnF2IYJkKU3zJVzFcxSloNr
+      token: s.wsllTpQOvjZm98B2s9n3wNq8
       application-name: product-service
   application:
     name: product-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:8180/auth/realms/microservices-project-realm"
+
 server:
   port: 0
 
