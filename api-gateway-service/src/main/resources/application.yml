@@ -8,23 +8,28 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-       - id: product-service
-         uri: "lb://product-service"
-         predicates: Path=/api/product
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+        - Path=/api/product
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/api/order
       loadbalancer:
         ribbon:
           enabled: false
-      default-filters: "TokenRelay"
+      default-filters: TokenRelay
   security:
     oauth2:
       client:
         provider:
           keycloak:
-            issuer-uri: "http://localhost:8180/auth/realms/microservices-project-realm"
+            issuer-uri: "http://localhost:8180/auth/realms/microservices-realm"
         registration:
           spring-cloud-gateway-client:
             client-id: spring-cloud-gateway-client
-            client-secret: "d54ee104-1867-4d80-a623-2e289a4ec437"
+            client-secret: "2eb79a25-dd68-428a-a0e9-1e078aa02e01"
             provider: keycloak
             authorization-grant-type: authorization_code
             redirect-uri: "http://localhost:8080/login/oauth2/code/spring-cloud-gateway-client"

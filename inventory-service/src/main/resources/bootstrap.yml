@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: inventory-service
   cloud:
     config:
       uri: http://localhost:8888
@@ -7,10 +9,8 @@ spring:
       port: 8200
       scheme: http
       authentication: TOKEN
-      token: s.Y68n8IYSJvy99JPwvBA3cbRH
-      application-name: product-service
-  application:
-    name: product-service
+      token: s.rTh26TZlbKWBZJfVlwSAJy9f
+      application-name: inventory-service
   rabbitmq:
     host: localhost
     port: 5672
@@ -22,9 +22,6 @@ spring:
         jwt:
           issuer-uri: "http://localhost:8180/auth/realms/microservices-realm"
 
-server:
-  port: 0
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
@@ -34,3 +31,5 @@ management:
     web:
       exposure:
         include: "*"
+server:
+  port: 8183
