@@ -12,6 +12,11 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+    stream:
+      bindings:
+        notificationEventSupplier-out-0:
+          destination: notification-events
+      source: notificationEventSupplier
   rabbitmq:
     host: localhost
     port: 5672
