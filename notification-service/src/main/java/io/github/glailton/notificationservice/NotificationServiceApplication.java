@@ -4,6 +4,7 @@ import io.github.glailton.notificationservice.service.EmailSender;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.Message;
 
 import java.util.function.Consumer;
 
@@ -15,8 +16,8 @@ public class NotificationServiceApplication {
     }
 
     @Bean
-    public Consumer<String> notificationEventSupplier() {
-        return message -> new EmailSender().sendEmail(message);
+    public Consumer<Message<String>> notificationEventSupplier() {
+        return message -> new EmailSender().sendEmail(message.getPayload());
     }
 
 }

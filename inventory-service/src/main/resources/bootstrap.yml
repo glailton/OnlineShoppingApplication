@@ -9,7 +9,7 @@ spring:
       port: 8200
       scheme: http
       authentication: TOKEN
-      token: s.rTh26TZlbKWBZJfVlwSAJy9f
+      token: s.lucIT2Htfj2M4xtjQY1WSpAm
       application-name: inventory-service
   rabbitmq:
     host: localhost
@@ -21,6 +21,11 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: "http://localhost:8180/auth/realms/microservices-realm"
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://localhost:9411/
 
 eureka:
   instance:

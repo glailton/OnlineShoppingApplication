@@ -7,7 +7,7 @@ spring:
       port: 8200
       scheme: http
       authentication: TOKEN
-      token: s.rTh26TZlbKWBZJfVlwSAJy9f
+      token: s.lucIT2Htfj2M4xtjQY1WSpAm
       application-name: order-service
     loadbalancer:
       ribbon:
@@ -17,6 +17,11 @@ spring:
         notificationEventSupplier-out-0:
           destination: notification-events
       source: notificationEventSupplier
+  sleuth:
+    integration:
+      enabled: true
+    sampler:
+      probability: 1
   rabbitmq:
     host: localhost
     port: 5672
@@ -27,3 +32,5 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: "http://localhost:8180/auth/realms/microservices-realm"
+  zipkin:
+    base-url: http://localhost:9411/
