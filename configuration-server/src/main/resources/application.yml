@@ -6,8 +6,8 @@ spring:
       server:
         git:
           uri: https://github.com/glailton/microservices-config-server.git
-          username: glailton
-          password: Gl@ilton26
+          username:
+          password:
           clone-on-start: true
 server:
   port: 8888
